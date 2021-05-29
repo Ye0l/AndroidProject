@@ -24,3 +24,6 @@
 >
 >  > #### TextInputLayout 사용하기
 >  > - https://developer.android.com/reference/android/support/design/widget/TextInputLayout
+>
+>  > #### Button 기본 여백 제거하기(MaterialComponent 사용시)
+>  > - https://stackoverflow.com/questions/16394252/how-do-i-reduce-the-inner-padding-around-the-text-within-an-android-button-objec
