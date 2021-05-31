@@ -50,7 +50,7 @@
                         android:text="필수 입력 정보" />
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/tlID"
+                        android:id="@+id/login_tlID"
                         style="@style/textinputlayout_extra"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

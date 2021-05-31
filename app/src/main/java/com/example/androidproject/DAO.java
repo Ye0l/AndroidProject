@@ -9,7 +9,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class DAO {
-    public HttpURLConnection getConnection(URL url) {
+    private HttpURLConnection getConnection(URL url) {
         try {
             HttpURLConnection http;
             http = (HttpURLConnection) url.openConnection();
@@ -32,7 +32,7 @@ public class DAO {
             URL setURL = new URL("http://10.0.2.2/createAccount.php");
             HttpURLConnection http = getConnection(setURL);
             StringBuffer buffer = new StringBuffer();
-            buffer.append("name").append("=")
+            buffer.append("data").append("=")
                     .append(dto.getId()).append("/")
                     .append(dto.getPwd()).append("/")
                     .append(dto.getNick()).append("/")
@@ -47,6 +47,18 @@ public class DAO {
             while (reader.readLine() != null) {
                 System.out.println(reader.readLine());
             }
+        } catch (Exception e) {
+            Log.e("", "Error", e);
+        }
+    }
+
+    public void login(DTO dto) {
+        try {
+            URL setURL = new URL("http://10.0.2.2/login.php");
+            HttpURLConnection http = getConnection(setURL);
+            
+            // 마저 할것
+            
         } catch (Exception e) {
             Log.e("", "Error", e);
         }

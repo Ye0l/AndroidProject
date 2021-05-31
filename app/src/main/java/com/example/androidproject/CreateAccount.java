@@ -6,19 +6,11 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
-import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
-
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
-import java.net.URL;
 
 public class CreateAccount extends AppCompatActivity {
     Handler handler = new Handler();
@@ -31,7 +23,7 @@ public class CreateAccount extends AppCompatActivity {
         setContentView(R.layout.activity_create_account);
 
         btnSubmit = findViewById(R.id.btnSubmit);
-        final TextInputLayout tlID = findViewById(R.id.tlID);
+        final TextInputLayout tlID = findViewById(R.id.login_tlID);
         final TextInputLayout tlPwd = findViewById(R.id.tlPwd);
         final TextInputLayout tlPwdCheck = findViewById(R.id.tlPwdCheck);
         final TextInputLayout tlNick = findViewById(R.id.tlNick);
@@ -150,6 +142,28 @@ public class CreateAccount extends AppCompatActivity {
                     submitCheck[2] = true;
                 }
                 submitEnable();
+            }
+        });
+
+        btnSubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DTO dto = new DTO(
+                        tlID.getEditText().getText().toString(),
+                        tlPwd.getEditText().getText().toString(),
+                        tlNick.getEditText().getText().toString(),
+                        tlName.getEditText().getText().toString(),
+                        tlAge.getEditText().getText().toString(),
+                        tlPhone.getEditText().getText().toString()
+                );
+
+                DAO dao = new DAO();
+                new Thread() {
+                    @Override
+                    public void run() {
+                        dao.createAccount(dto);
+                    }
+                }.start();
             }
         });
     }

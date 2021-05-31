@@ -1,17 +1,28 @@
 package com.example.androidproject;
 
 public class DTO {
-    String id;
-    String nick;
-    String pwd;
-    String name;
-    String age;
-    String phone;
+    String id = null;
+    String nick = null;
+    String pwd = null;
+    String name = null;
+    String age = null;
+    String phone = null;
 
     public DTO() {
     }
 
-    public DTO(String id, String nick, String pwd, String name, String age, String phone) {
+    public DTO(String id, String pwd) {
+        this.id = id;
+        this.pwd = pwd;
+    }
+
+    public DTO(String id, String nick, String pwd) {
+        this.id = id;
+        this.nick = nick;
+        this.pwd = pwd;
+    }
+
+    public DTO(String id, String pwd, String nick, String name, String age, String phone) {
         this.id = id;
         this.nick = nick;
         this.pwd = pwd;
