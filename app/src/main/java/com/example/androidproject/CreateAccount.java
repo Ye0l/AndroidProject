@@ -9,6 +9,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -161,7 +162,18 @@ public class CreateAccount extends AppCompatActivity {
                 new Thread() {
                     @Override
                     public void run() {
-                        dao.createAccount(dto);
+                        try {
+                            dao.createAccount(dto);
+                            handler.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Toast.makeText(CreateAccount.this, "회원가입 완료!", Toast.LENGTH_SHORT).show();
+                                    finish();
+                                }
+                            });
+                        } catch (Exception e) {
+                            Toast.makeText(CreateAccount.this, "회원가입 오류 발생. 관리자에 문의바람.", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 }.start();
             }

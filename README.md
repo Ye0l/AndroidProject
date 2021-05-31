@@ -6,6 +6,7 @@
 ### 참고 사이트
 > #### 닷홈에서 mysql_connect() 실행이 안되는 부분
 > - 닷홈에 적용된 php가 7.x버전, php 7버전부터 보안문제로 mysql이 삭제되었다고한다. mysqli 사용 권장.
+> - php 7버전부터 split() 삭제, 같은 기능의 explode()사용할것: https://www.codingfactory.net/10702
 > - mysqli 사용법: https://offbyone.tistory.com/2
 > - mysqli_query() 오류 해결에 사용한 페이지: https://jootc.com/p/201806211292
 > - 닷홈 내에서 php가 닷홈 내의 DB로 접속하는 것이니 php파일엔 localhost로 사용해야 함 ..
@@ -27,3 +28,6 @@
 >
 >  > #### Button 기본 여백 제거하기(MaterialComponent 사용시)
 >  > - https://stackoverflow.com/questions/16394252/how-do-i-reduce-the-inner-padding-around-the-text-within-an-android-button-objec
+
+>  > #### SharedPreference 사용하기(로그인정보 유지)
+>  > - https://re-build.tistory.com/37

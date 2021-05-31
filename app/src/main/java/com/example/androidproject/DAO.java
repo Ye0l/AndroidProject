@@ -1,5 +1,6 @@
 package com.example.androidproject;
 
+import android.os.Handler;
 import android.util.Log;
 
 import java.io.BufferedReader;
@@ -39,10 +40,10 @@ public class DAO {
                     .append(dto.getName()).append("/")
                     .append(dto.getAge()).append("/")
                     .append(dto.getPhone());
-            OutputStreamWriter outStream = new OutputStreamWriter(http.getOutputStream(), "euc-kr");
+            OutputStreamWriter outStream = new OutputStreamWriter(http.getOutputStream(), "utf-8");
             outStream.write(buffer.toString());
             outStream.flush();
-            InputStreamReader tmp = new InputStreamReader(http.getInputStream(), "euc-kr");
+            InputStreamReader tmp = new InputStreamReader(http.getInputStream(), "utf-8");
             final BufferedReader reader = new BufferedReader(tmp);
             while (reader.readLine() != null) {
                 System.out.println(reader.readLine());
@@ -52,15 +53,46 @@ public class DAO {
         }
     }
 
-    public void login(DTO dto) {
+    public DTO login(DTO dto) {
         try {
             URL setURL = new URL("http://10.0.2.2/login.php");
             HttpURLConnection http = getConnection(setURL);
-            
-            // 마저 할것
-            
+            StringBuffer buffer = new StringBuffer();
+            buffer.append("data").append("=")
+                    .append(dto.getId()).append("/")
+                    .append(dto.getPwd());
+            OutputStreamWriter outStream = new OutputStreamWriter(http.getOutputStream(), "utf-8");
+            outStream.write(buffer.toString());
+            outStream.flush();
+            InputStreamReader tmp = new InputStreamReader(http.getInputStream(), "utf-8");
+            final BufferedReader reader = new BufferedReader(tmp);
+            String str = reader.readLine();;
+            final String[] sResult = str.split("/");
+            System.out.println(str);
+            if(sResult != null)
+                if(sResult[0].equals(dto.getId()) && sResult[1].equals(dto.getPwd())) {
+                    DTO prefsDto = new DTO(sResult[0], sResult[1], sResult[2]);
+                    try {
+                        prefsDto.setName(sResult[3]);
+                    } catch (Exception e) {
+                        System.out.println("null name");
+                    }
+                    try {
+                        prefsDto.setName(sResult[4]);
+                    } catch (Exception e) {
+                        System.out.println("null age");
+                    }
+                    try {
+                        prefsDto.setName(sResult[5]);
+                    } catch (Exception e) {
+                        System.out.println("null phone");
+                    }
+                    return prefsDto;
+                }
         } catch (Exception e) {
             Log.e("", "Error", e);
+            return null;
         }
+        return null;
     }
 }
