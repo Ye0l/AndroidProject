@@ -31,3 +31,8 @@
 
 >  > #### SharedPreference 사용하기(로그인정보 유지)
 >  > - https://re-build.tistory.com/37
+
+>  > #### BottomNavigationView 사용하기(하단바)
+>  > - https://lktprogrammer.tistory.com/183
+>  > 하단바에 넣을 아이콘 SVG(벡터이미지)로 사용하기
+>  > - https://m.blog.naver.com/bluecrossing/221444538370
