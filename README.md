@@ -34,5 +34,5 @@
 
 >  > #### BottomNavigationView 사용하기(하단바)
 >  > - https://lktprogrammer.tistory.com/183
->  > 하단바에 넣을 아이콘 SVG(벡터이미지)로 사용하기
->  > - https://m.blog.naver.com/bluecrossing/221444538370
+>  > - 하단바에 넣을 아이콘 SVG(벡터이미지)로 사용하기: https://m.blog.naver.com/bluecrossing/221444538370
+>  > - Fragment에서 FindViewById 사용하기: https://brightmango.tistory.com/39

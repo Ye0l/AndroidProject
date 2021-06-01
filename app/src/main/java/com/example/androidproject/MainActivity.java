@@ -50,7 +50,8 @@ public class MainActivity extends AppCompatActivity {
                                 @Override
                                 public void run() {
                                     Toast.makeText(MainActivity.this, "로그인 성공!", Toast.LENGTH_SHORT).show();
-                                    PreferenceManager.setDTO(MainActivity.this, "login", result);
+                                    PreferenceManager.setDTO(MainActivity.this, result);
+                                    System.out.println(PreferenceManager.getDTO(MainActivity.this).toString());
                                     Intent intent = new Intent(getApplicationContext(), MainMenu.class);
                                     startActivity(intent);
                                 }

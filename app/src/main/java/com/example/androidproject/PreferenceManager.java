@@ -39,7 +39,7 @@ public class PreferenceManager {
         return value;
     }
 
-    public static void setDTO(Context context, String key, DTO dto) {
+    public static void setDTO(Context context, DTO dto) {
         SharedPreferences prefs = getPreferences(context);
         SharedPreferences.Editor editor = prefs.edit();
         editor.putString("id", dto.getId());
@@ -51,12 +51,12 @@ public class PreferenceManager {
         editor.commit();
     }
 
-    public static DTO getDTO(Context context, String key) {
+    public static DTO getDTO(Context context) {
         SharedPreferences prefs = getPreferences(context);
         DTO dto = new DTO(
                 prefs.getString("id", DEFAULT_VALUE_STRING),
-                prefs.getString("nick", DEFAULT_VALUE_STRING),
                 prefs.getString("pwd", DEFAULT_VALUE_STRING),
+                prefs.getString("nick", DEFAULT_VALUE_STRING),
                 prefs.getString("name", DEFAULT_VALUE_STRING),
                 prefs.getString("age", DEFAULT_VALUE_STRING),
                 prefs.getString("phone", DEFAULT_VALUE_STRING)

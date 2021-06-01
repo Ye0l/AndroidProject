@@ -16,10 +16,22 @@ public class DTO {
         this.pwd = pwd;
     }
 
-    public DTO(String id, String nick, String pwd) {
+    public DTO(String id, String pwd, String nick) {
         this.id = id;
-        this.nick = nick;
         this.pwd = pwd;
+        this.nick = nick;
+    }
+
+    @Override
+    public String toString() {
+        return "DTO{" +
+                "id='" + id + '\'' +
+                ", nick='" + nick + '\'' +
+                ", pwd='" + pwd + '\'' +
+                ", name='" + name + '\'' +
+                ", age='" + age + '\'' +
+                ", phone='" + phone + '\'' +
+                '}';
     }
 
     public DTO(String id, String pwd, String nick, String name, String age, String phone) {
