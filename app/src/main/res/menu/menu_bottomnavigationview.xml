@@ -4,21 +4,21 @@
     <item
         android:id="@+id/feed"
         android:icon="@drawable/ic_m1"
-        android:title="feed" />
+        android:title="Feed" />
     <item
         android:id="@+id/alert"
         android:icon="@drawable/ic_m2"
-        android:title="alert" />
+        android:title="Alert" />
     <item
         android:id="@+id/search"
         android:icon="@drawable/ic_m3"
-        android:title="search" />
+        android:title="Groups" />
     <item
         android:id="@+id/profile"
         android:icon="@drawable/ic_m4"
-        android:title="profile" />
+        android:title="Profile" />
     <item
         android:id="@+id/settings"
         android:icon="@drawable/ic_m5"
-        android:title="settings" />
+        android:title="Settings" />
 </menu>

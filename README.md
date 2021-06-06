@@ -28,11 +28,17 @@
 >
 >  > #### Button 기본 여백 제거하기(MaterialComponent 사용시)
 >  > - https://stackoverflow.com/questions/16394252/how-do-i-reduce-the-inner-padding-around-the-text-within-an-android-button-objec
-
->  > #### SharedPreference 사용하기(로그인정보 유지)
->  > - https://re-build.tistory.com/37
-
+>
 >  > #### BottomNavigationView 사용하기(하단바)
 >  > - https://lktprogrammer.tistory.com/183
 >  > - 하단바에 넣을 아이콘 SVG(벡터이미지)로 사용하기: https://m.blog.naver.com/bluecrossing/221444538370
 >  > - Fragment에서 FindViewById 사용하기: https://brightmango.tistory.com/39
+>
+>  > #### Drawer Layout 사용하기 (측면 슬라이드메뉴)
+>  > - https://recipes4dev.tistory.com/139
+>
+>  > #### 버튼에 이미지넣기
+>  > - https://kd3302.tistory.com/81
+
+>  > #### SharedPreference 사용하기(로그인정보 유지)
+>  > - https://re-build.tistory.com/37

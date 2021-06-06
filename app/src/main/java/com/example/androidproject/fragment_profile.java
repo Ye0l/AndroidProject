@@ -16,11 +16,14 @@ public class fragment_profile extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
+
         TextView tvNick = view.findViewById(R.id.profile_tv_nick);
         TextView tvId = view.findViewById(R.id.profile_tv_id);
+        TextView tvIntro = view.findViewById(R.id.profile_tvIntro);
 
         tvNick.setText(PreferenceManager.getString(view.getContext(), "nick"));
-        tvId.setText(PreferenceManager.getString(view.getContext(), "id"));
+        tvId.setText("@" + PreferenceManager.getString(view.getContext(), "id"));
+        tvIntro.setText(PreferenceManager.getString(view.getContext(), "intro"));
 
         return view;
     }

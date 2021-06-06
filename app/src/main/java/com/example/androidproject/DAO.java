@@ -87,6 +87,11 @@ public class DAO {
                     } catch (Exception e) {
                         System.out.println("null phone");
                     }
+                    try {
+                        prefsDto.setIntro(sResult[6]);
+                    } catch (Exception e) {
+                        System.out.println("null intro");
+                    }
                     return prefsDto;
                 }
         } catch (Exception e) {

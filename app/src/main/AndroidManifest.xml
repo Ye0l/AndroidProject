@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidProject"
         android:usesCleartextTraffic="true">
-        <activity android:name=".MainMenu"></activity>
+        <activity android:name=".GroupMain"></activity>
+        <activity android:name=".MainMenu" />
         <activity android:name=".CreateAccount" />
         <activity android:name=".MainActivity">
             <intent-filter>

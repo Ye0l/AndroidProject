@@ -48,6 +48,7 @@ public class PreferenceManager {
         editor.putString("name", dto.getName());
         editor.putString("age", dto.getAge());
         editor.putString("phone", dto.getPhone());
+        editor.putString("intro", dto.getIntro());
         editor.commit();
     }
 
@@ -59,7 +60,8 @@ public class PreferenceManager {
                 prefs.getString("nick", DEFAULT_VALUE_STRING),
                 prefs.getString("name", DEFAULT_VALUE_STRING),
                 prefs.getString("age", DEFAULT_VALUE_STRING),
-                prefs.getString("phone", DEFAULT_VALUE_STRING)
+                prefs.getString("phone", DEFAULT_VALUE_STRING),
+                prefs.getString("intro", DEFAULT_VALUE_STRING)
         );
         return dto;
     }

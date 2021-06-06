@@ -7,6 +7,7 @@ public class DTO {
     String name = null;
     String age = null;
     String phone = null;
+    String intro = "";
 
     public DTO() {
     }
@@ -22,6 +23,25 @@ public class DTO {
         this.nick = nick;
     }
 
+    public DTO(String id, String pwd, String nick, String name, String age, String phone) {
+        this.id = id;
+        this.nick = nick;
+        this.pwd = pwd;
+        this.name = name;
+        this.age = age;
+        this.phone = phone;
+    }
+
+    public DTO(String id, String pwd, String nick, String name, String age, String phone, String intro) {
+        this.id = id;
+        this.nick = nick;
+        this.pwd = pwd;
+        this.name = name;
+        this.age = age;
+        this.phone = phone;
+        this.intro = intro;
+    }
+
     @Override
     public String toString() {
         return "DTO{" +
@@ -31,16 +51,8 @@ public class DTO {
                 ", name='" + name + '\'' +
                 ", age='" + age + '\'' +
                 ", phone='" + phone + '\'' +
+                ", intro='" + intro + '\'' +
                 '}';
-    }
-
-    public DTO(String id, String pwd, String nick, String name, String age, String phone) {
-        this.id = id;
-        this.nick = nick;
-        this.pwd = pwd;
-        this.name = name;
-        this.age = age;
-        this.phone = phone;
     }
 
     public String getId() {
@@ -89,5 +101,13 @@ public class DTO {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getIntro() {
+        return intro;
+    }
+
+    public void setIntro(String intro) {
+        this.intro = intro;
     }
 }
