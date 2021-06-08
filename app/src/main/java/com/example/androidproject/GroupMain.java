@@ -6,10 +6,12 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 public class GroupMain extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private View sideBar;
+    private TextView groupName, memberCount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +20,11 @@ public class GroupMain extends AppCompatActivity {
 
         drawerLayout = (DrawerLayout)findViewById(R.id.group_dl);
         sideBar = (View)findViewById(R.id.sideBar);
+        groupName = findViewById(R.id.sideBarGroupName);
+        memberCount = findViewById(R.id.sideBarMemberCount);
+
+        groupName.setText(getIntent().getStringExtra("TITLE"));
+        memberCount.setText(getIntent().getStringExtra("COUNT"));
 
         drawerLayout.addDrawerListener(new DrawerLayout.DrawerListener() {
             @Override

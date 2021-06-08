@@ -29,7 +29,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
-                    android:id="@+id/textView4"
+                    android:id="@+id/sideBarGroupName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="[GroupName]"
@@ -52,7 +52,7 @@
                         android:src="@drawable/ic_person_icon" />
 
                     <TextView
-                        android:id="@+id/textView5"
+                        android:id="@+id/sideBarMemberCount"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="99999"
@@ -75,8 +75,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/white"
-                android:drawableLeft="@drawable/ic_home"
                 android:text="Home" />
+<!--                android:drawableLeft="@drawable/ic_home"-->
 
             <Button
                 android:id="@+id/button0"

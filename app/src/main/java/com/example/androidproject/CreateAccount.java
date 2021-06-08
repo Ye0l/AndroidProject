@@ -82,15 +82,15 @@ public class CreateAccount extends AppCompatActivity {
                 } else {
                     tlPwd.setErrorEnabled(false);
                     tlPwd.setError(null);
-                    submitCheck[1] = true;
-                }
-                if(!(etPwdCheck.getText().toString().equals(etPwd.getText().toString()))) {
-                    tlPwdCheck.setError("패스워드를 확인해주세요.");
-                    submitCheck[1] = false;
-                } else {
-                    tlPwdCheck.setErrorEnabled(false);
-                    tlPwdCheck.setError(null);
-                    submitCheck[1] = true;
+
+                    if(!(etPwdCheck.getText().toString().equals(etPwd.getText().toString()))) {
+                        tlPwdCheck.setError("패스워드를 확인해주세요.");
+                        submitCheck[1] = false;
+                    } else {
+                        tlPwdCheck.setErrorEnabled(false);
+                        tlPwdCheck.setError(null);
+                        submitCheck[1] = true;
+                    }
                 }
                 submitEnable();
             }
@@ -114,7 +114,7 @@ public class CreateAccount extends AppCompatActivity {
                 } else {
                     tlPwdCheck.setErrorEnabled(false);
                     tlPwdCheck.setError(null);
-                    submitCheck[1] = true;
+                    if(etPwd.length() >= 8) submitCheck[1] = true;
                 }
                 submitEnable();
             }
