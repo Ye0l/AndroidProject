@@ -50,13 +50,17 @@ public class GroupListAdapter extends BaseAdapter {
         return convertView;
     }
 
-    public void addItem(String title, Integer membercount, String intro) {
+    public void addItem(GroupDTO dto) {
         GroupListItem item = new GroupListItem();
 
-        item.setName(title);
-        item.setMembercount(membercount);
-        item.setIntroduce(intro);
+        item.setName(dto.getName());
+        item.setMembercount(dto.getMemberCount());
+        item.setIntroduce(dto.getIntro());
 
         groupListItems.add(item);
+    }
+
+    public void clearItem() {
+        groupListItems.clear();
     }
 }

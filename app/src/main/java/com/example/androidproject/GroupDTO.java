@@ -4,6 +4,15 @@ public class GroupDTO {
     int id;
     String name;
     String intro;
+    Integer memberCount;
+
+    public Integer getMemberCount() {
+        return memberCount;
+    }
+
+    public void setMemberCount(Integer memberCount) {
+        this.memberCount = memberCount;
+    }
 
     public int getId() {
         return id;

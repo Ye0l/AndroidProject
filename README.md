@@ -40,5 +40,12 @@
 >  > #### 버튼에 이미지넣기
 >  > - https://kd3302.tistory.com/81
 
->  > #### SharedPreference 사용하기(로그인정보 유지)
->  > - https://re-build.tistory.com/37
+> #### SharedPreference 사용하기(로그인정보 유지)
+> - https://re-build.tistory.com/37
+
+> #### Select절 서브쿼리(스칼라서브쿼리)
+> - http://blog.naver.com/PostView.nhn?blogId=pyj721aa&logNo=221466664622&categoryNo=0&parentCategoryNo=0&viewDate=&currentPage=1&postListTopCurrentPage=1&from=postView
+
+### 중요 참고
+java.net.ProtocolException: unexpected end of stream
+- https://sandn.tistory.com/67

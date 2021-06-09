@@ -3,15 +3,20 @@ package com.example.androidproject;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
 public class GroupMain extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private View sideBar;
     private TextView groupName, memberCount;
+    private FragmentManager fragmentManager = getSupportFragmentManager();
+    private GroupBoard groupBoard = new GroupBoard();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +30,9 @@ public class GroupMain extends AppCompatActivity {
 
         groupName.setText(getIntent().getStringExtra("TITLE"));
         memberCount.setText(getIntent().getStringExtra("COUNT"));
+
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.replace(R.id.groupMainFrame, groupBoard).commitAllowingStateLoss();
 
         drawerLayout.addDrawerListener(new DrawerLayout.DrawerListener() {
             @Override

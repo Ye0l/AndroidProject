@@ -10,7 +10,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class DAO {
-    private HttpURLConnection getConnection(URL url) {
+    protected HttpURLConnection getConnection(URL url) {
         try {
             HttpURLConnection http;
             http = (HttpURLConnection) url.openConnection();
@@ -30,23 +30,24 @@ public class DAO {
 
     public void createAccount(DTO dto) {
         try {
-            URL setURL = new URL("http://10.0.2.2/createAccount.php");
+            URL setURL = new URL("http://klure.dothome.co.kr/createAccount.php");
             HttpURLConnection http = getConnection(setURL);
             StringBuffer buffer = new StringBuffer();
             buffer.append("data").append("=")
                     .append(dto.getId()).append("/")
                     .append(dto.getPwd()).append("/")
                     .append(dto.getNick()).append("/")
-                    .append(dto.getName()).append("/")
-                    .append(dto.getAge()).append("/")
-                    .append(dto.getPhone());
-            OutputStreamWriter outStream = new OutputStreamWriter(http.getOutputStream(), "utf-8");
+                    .append(dto.getName().equals("") ? "null" : dto.getName()).append("/")
+                    .append(dto.getAge().equals("") ? "0" : dto.getAge()).append("/")
+                    .append(dto.getPhone().equals("") ? "null" : dto.getPhone());
+            OutputStreamWriter outStream = new OutputStreamWriter(http.getOutputStream(), "UTF-8");
             outStream.write(buffer.toString());
             outStream.flush();
-            InputStreamReader tmp = new InputStreamReader(http.getInputStream(), "utf-8");
+            InputStreamReader tmp = new InputStreamReader(http.getInputStream(), "UTF-8");
             final BufferedReader reader = new BufferedReader(tmp);
-            while (reader.readLine() != null) {
-                System.out.println(reader.readLine());
+            String str;
+            while ((str = reader.readLine()) != null) {
+                System.out.println(str);
             }
         } catch (Exception e) {
             Log.e("", "Error", e);
@@ -55,7 +56,7 @@ public class DAO {
 
     public DTO login(DTO dto) {
         try {
-            URL setURL = new URL("http://10.0.2.2/login.php");
+            URL setURL = new URL("http://klure.dothome.co.kr/login.php");
             HttpURLConnection http = getConnection(setURL);
             StringBuffer buffer = new StringBuffer();
             buffer.append("data").append("=")
@@ -66,7 +67,7 @@ public class DAO {
             outStream.flush();
             InputStreamReader tmp = new InputStreamReader(http.getInputStream(), "utf-8");
             final BufferedReader reader = new BufferedReader(tmp);
-            String str = reader.readLine();;
+            String str = reader.readLine();
             final String[] sResult = str.split("/");
             System.out.println(str);
             if(sResult != null)
