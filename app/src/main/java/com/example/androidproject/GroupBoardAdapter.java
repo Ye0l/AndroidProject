@@ -52,7 +52,11 @@ public class GroupBoardAdapter extends BaseAdapter {
         return convertView;
     }
 
-    public void addItem() {
-//        게시판용 DTO만들고 addItem마무리하기
+    public void addItem(GroupBoardItem item) {
+        groupBoardItems.add(item);
+    }
+
+    public void clearItem() {
+        groupBoardItems.clear();
     }
 }
