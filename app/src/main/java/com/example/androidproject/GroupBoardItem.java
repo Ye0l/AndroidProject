@@ -6,6 +6,15 @@ public class GroupBoardItem {
     String id;
     String date;
     String contents;
+    String postID;
+
+    public String getPostID() {
+        return postID;
+    }
+
+    public void setPostID(String postID) {
+        this.postID = postID;
+    }
 
     public String getId() {
         return id;

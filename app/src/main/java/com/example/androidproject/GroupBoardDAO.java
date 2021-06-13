@@ -33,6 +33,7 @@ public class GroupBoardDAO extends DAO{
                 item.setId("@" + str[2]);
                 item.setDate(str[3]);
                 item.setContents(str[4]);
+                item.setPostID(str[5]);
 
                 itemArrayList.add(item);
             }
@@ -94,5 +95,28 @@ public class GroupBoardDAO extends DAO{
             Log.e("", "Error", e);
         }
         return null;
+    }
+
+    public void writePost(String boardID, String accountID, String title, String contents) {
+        try {
+            URL setURL = new URL("http://klure.dothome.co.kr/writePost.php");
+            HttpURLConnection http = getConnection(setURL);
+            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(http.getOutputStream(), "utf-8");
+            outputStreamWriter.write("data="
+                    + boardID + "/"
+                    + accountID + "/"
+                    + title + "/"
+                    + contents);
+            outputStreamWriter.flush();
+            InputStreamReader tmp = new InputStreamReader(http.getInputStream(), "utf-8");
+            final BufferedReader reader = new BufferedReader(tmp);
+            String readitem;
+            while ((readitem = reader.readLine()) != null) {
+                System.out.println(readitem);
+            }
+        } catch (Exception e) {
+            Log.e("", "Error", e);
+        }
+
     }
 }

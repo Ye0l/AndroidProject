@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidProject">
-        <activity android:name=".PostDetail"></activity>
+        <activity android:name=".GroupBoardWrite"></activity>
+        <activity android:name=".PostDetail" />
         <activity android:name=".GroupMain" />
         <activity android:name=".MainMenu" />
         <activity android:name=".CreateAccount" />

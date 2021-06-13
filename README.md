@@ -52,6 +52,9 @@
 > #### 스크롤 뷰 내부에 리스트뷰를 사용할 때에 리스트뷰에 아이템을 추가해도 높이가 조절되지 않을 때.
 > - https://wkdgusdn3.tistory.com/entry/Android-ScrollView%EC%95%88%EC%97%90-ListVIew-%EB%84%A3%EC%9D%84-%EC%8B%9C-Height-%EB%AC%B8%EC%A0%9C
 
+> #### 다른 인텐트로 넘어갔다가 다시 돌아오는 순간 코드 실행하기(onPause(), onResume())
+> - https://itlove.tistory.com/465
+
 ### 중요 참고
 java.net.ProtocolException: unexpected end of stream
 - https://sandn.tistory.com/67
