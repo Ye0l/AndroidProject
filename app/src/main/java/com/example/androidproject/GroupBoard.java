@@ -50,6 +50,7 @@ public class GroupBoard extends Fragment {
                 });
             }
         }.start();
+
         boardListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -60,6 +61,8 @@ public class GroupBoard extends Fragment {
                 intent.putExtra("ID", item.getId());
                 intent.putExtra("DATE", item.getDate());
                 intent.putExtra("CONTENTS", item.getContents());
+                intent.putExtra("BOARDID", String.valueOf(getArguments().getInt("ID")));
+                intent.putExtra("POSTID", String.valueOf(position+1)); // ArrayList는 0부터 시작하는데 MYSQL AUTO_INCREASMENT 는 1부터 시작함.
 
                 startActivity(intent);
             }

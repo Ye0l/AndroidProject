@@ -51,7 +51,6 @@ public class GroupDAO extends DAO {
             ArrayList<SideBarMenuItem> sideBarMenuItems = new ArrayList<SideBarMenuItem>();
             String str;
             while ((str = reader.readLine()) != null) {
-                System.out.println("fsdafasdfasd"+str);
                 String[] data = str.split("/");
                 SideBarMenuItem item = new SideBarMenuItem();
                 item.setId(data[0]);

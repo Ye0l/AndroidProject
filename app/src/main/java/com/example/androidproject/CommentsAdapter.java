@@ -44,7 +44,7 @@ public class CommentsAdapter extends BaseAdapter {
         CommentItem item = commentItemArrayList.get(position);
 
         nick.setText(item.getNick());
-        id.setText(item.getId());
+        id.setText("@" + item.getId());
         date.setText(item.getDate());
         contents.setText(item.getContents());
 

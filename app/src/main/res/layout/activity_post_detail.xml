@@ -18,7 +18,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/postDetailTitle"
@@ -90,6 +90,7 @@
                 app:layout_constraintTop_toBottomOf="@id/postDetailContents"
                 android:id="@+id/postDetailComments"
                 android:layout_margin="10dp"
+                android:divider="@null"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" >
 
@@ -111,7 +112,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/btnCommentSend"
                 app:layout_constraintTop_toBottomOf="@id/postDetailWriteComment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
