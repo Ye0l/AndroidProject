@@ -46,6 +46,9 @@
 > #### Select절 서브쿼리(스칼라서브쿼리)
 > - http://blog.naver.com/PostView.nhn?blogId=pyj721aa&logNo=221466664622&categoryNo=0&parentCategoryNo=0&viewDate=&currentPage=1&postListTopCurrentPage=1&from=postView
 
+> #### 리스트 뷰에서 버튼 사용할 때 클릭이 안 되는 문제
+> - https://trend21c.tistory.com/1411
+
 ### 중요 참고
 java.net.ProtocolException: unexpected end of stream
 - https://sandn.tistory.com/67

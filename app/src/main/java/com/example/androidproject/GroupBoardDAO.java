@@ -29,7 +29,7 @@ public class GroupBoardDAO extends DAO{
                 item.setWriter(str[1]);
                 item.setId("@" + str[2]);
                 item.setDate(str[3]);
-                item.setContents(str[4].length() > 50 ? str[4].substring(0,50) + "..." : str[4]);
+                item.setContents(str[4]);
 
                 itemArrayList.add(item);
             }

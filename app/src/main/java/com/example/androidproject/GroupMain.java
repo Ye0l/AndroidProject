@@ -10,7 +10,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -21,9 +24,8 @@ import java.util.ArrayList;
 public class GroupMain extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private View sideBar;
-    private TextView groupName, memberCount;
+    private TextView groupName, memberCount, groupMainTitle;
     private FragmentManager fragmentManager = getSupportFragmentManager();
-    private GroupBoard groupBoard = new GroupBoard();
     private Handler handler = new Handler();
 
     @Override
@@ -37,15 +39,10 @@ public class GroupMain extends AppCompatActivity {
         sideBar = (View)findViewById(R.id.sideBar);
         groupName = findViewById(R.id.sideBarGroupName);
         memberCount = findViewById(R.id.sideBarMemberCount);
+        groupMainTitle = findViewById(R.id.groupMainTitle);
 
         groupName.setText(getIntent().getStringExtra("TITLE"));
         memberCount.setText(getIntent().getStringExtra("COUNT"));
-
-        Bundle bundle = new Bundle();
-        bundle.putInt("ID", intent.getIntExtra("ID", 0));
-        groupBoard.setArguments(bundle);
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.replace(R.id.groupMainFrame, groupBoard).commitAllowingStateLoss();
 
         drawerLayout.addDrawerListener(new DrawerLayout.DrawerListener() {
             @Override
@@ -81,13 +78,55 @@ public class GroupMain extends AppCompatActivity {
                     @Override
                     public void run() {
                         adapter.clearItem();
-                        for (SideBarMenuItem item : itemArrayList) {
-                            adapter.addItem(item);
+                        try {
+                            for (SideBarMenuItem item : itemArrayList) {
+                                adapter.addItem(item);
+                            }
+
+                            SideBarMenuItem settings = new SideBarMenuItem();
+                            settings.setName("Settings");
+                            adapter.addItem(settings);
+                            adapter.notifyDataSetChanged();
+                            Bundle bundle = new Bundle();
+                            bundle.putInt("ID", Integer.valueOf(itemArrayList.get(0).getId()));
+                            GroupBoard groupBoard = new GroupBoard();
+                            groupBoard.setArguments(bundle);
+
+                            groupMainTitle.setText(itemArrayList.get(0).getName());
+
+                            FragmentTransaction transaction = fragmentManager.beginTransaction();
+                            transaction.replace(R.id.groupMainFrame, groupBoard).commitAllowingStateLoss();
+                        } catch (Exception e) {
+                            Log.e("", "Error", e);
                         }
-                        adapter.notifyDataSetChanged();
                     }
                 });
             }
         }).start();
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if(((SideBarMenuItem)parent.getItemAtPosition(position)).getName().equals("Settings")) {
+                    groupMainTitle.setText("SETTINGS");
+                    GroupSettings groupSettings = new GroupSettings();
+                    FragmentTransaction transaction = fragmentManager.beginTransaction();
+                    transaction.replace(R.id.groupMainFrame, groupSettings).commitAllowingStateLoss();
+                } else {
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("ID", Integer.valueOf(((SideBarMenuItem) parent.getItemAtPosition(position)).getId()));
+                    groupMainTitle.setText(((SideBarMenuItem) parent.getItemAtPosition(position)).getName());
+
+                    GroupBoard groupBoard = new GroupBoard();
+                    groupBoard.setArguments(bundle);
+
+                    FragmentTransaction transaction = fragmentManager.beginTransaction();
+                    transaction.replace(R.id.groupMainFrame, groupBoard).commitAllowingStateLoss();
+
+                }
+
+                drawerLayout.closeDrawer(Gravity.LEFT);
+            }
+        });
     }
 }

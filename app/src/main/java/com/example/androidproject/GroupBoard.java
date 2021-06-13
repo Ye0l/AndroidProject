@@ -1,5 +1,6 @@
 package com.example.androidproject;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -17,6 +18,7 @@ import java.util.ArrayList;
 
 public class GroupBoard extends Fragment {
     Handler handler = new Handler();
+    ArrayList<GroupBoardItem> groupBoardItems = new ArrayList<GroupBoardItem>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -30,27 +32,36 @@ public class GroupBoard extends Fragment {
         new Thread() {
             @Override
             public void run() {
-                try {
-                    final ArrayList<GroupBoardItem> itemArrayList = new GroupBoardDAO().loadPostList(getArguments().getInt("ID"));
-                    handler.post(new Runnable() {
-                        @Override
-                        public void run() {
+                final ArrayList<GroupBoardItem> itemArrayList = new GroupBoardDAO().loadPostList(getArguments().getInt("ID"));
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
                             boardAdapter.clearItem();
                             for(GroupBoardItem item : itemArrayList) {
                                 boardAdapter.addItem(item);
+                                groupBoardItems.add(item);
                             }
                             boardAdapter.notifyDataSetChanged();
+                        } catch (Exception e) {
+                            Log.e("", "error: ", e);
                         }
-                    });
-                } catch (Exception e) {
-                    Log.e("", "error: ", e);
-                }
+                    }
+                });
             }
         }.start();
         boardListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                
+                Intent intent = new Intent(getContext(), PostDetail.class);
+                GroupBoardItem item = groupBoardItems.get(position);
+                intent.putExtra("TITLE", item.getTitle());
+                intent.putExtra("NICK", item.getWriter());
+                intent.putExtra("ID", item.getId());
+                intent.putExtra("DATE", item.getDate());
+                intent.putExtra("CONTENTS", item.getContents());
+
+                startActivity(intent);
             }
         });
 

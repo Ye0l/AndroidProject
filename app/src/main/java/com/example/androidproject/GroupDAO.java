@@ -39,20 +39,23 @@ public class GroupDAO extends DAO {
 
     }
 
-    public ArrayList<SideBarMenuItem> getSideBarMenuItems(Integer menuID) {
+    public ArrayList<SideBarMenuItem> getSideBarMenuItems(Integer groupID) {
         try {
             URL setURL = new URL("http://klure.dothome.co.kr/getSideBarMenuItems.php");
             HttpURLConnection http = getConnection(setURL);
             OutputStreamWriter outStream = new OutputStreamWriter(http.getOutputStream(), "utf-8");
-            outStream.write("menuID=" + String.valueOf(menuID));
+            outStream.write("groupID=" + String.valueOf(groupID));
             outStream.flush();
             InputStreamReader tmp = new InputStreamReader(http.getInputStream(), "UTF-8");
             final BufferedReader reader = new BufferedReader(tmp);
             ArrayList<SideBarMenuItem> sideBarMenuItems = new ArrayList<SideBarMenuItem>();
             String str;
             while ((str = reader.readLine()) != null) {
+                System.out.println("fsdafasdfasd"+str);
+                String[] data = str.split("/");
                 SideBarMenuItem item = new SideBarMenuItem();
-                item.setName(str);
+                item.setId(data[0]);
+                item.setName(data[1]);
 
                 sideBarMenuItems.add(item);
             }
@@ -61,6 +64,10 @@ public class GroupDAO extends DAO {
         } catch (Exception e) {
             Log.e("", "Error", e);
         }
+        return null;
+    }
+
+    public ArrayList<CommentItem> getComments(Integer boardID, Integer PostID) {
         return null;
     }
 }

@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -38,10 +40,12 @@ public class SideBarMenuItemAdapter extends BaseAdapter {
         }
 
         Button menuItem = (Button) convertView.findViewById(R.id.sideBarMenuItem);
+        TextView menuID = (TextView) convertView.findViewById(R.id.sideBarMenuID);
 
         SideBarMenuItem item = sideBarMenuItems.get(position);
 
         menuItem.setText(item.getName());
+        menuID.setText(item.getId());
 
         return convertView;
     }

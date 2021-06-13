@@ -49,7 +49,7 @@ public class GroupBoardAdapter extends BaseAdapter {
         writer.setText(item.getWriter());
         id.setText(item.getId());
         date.setText(item.getDate());
-        contents.setText(item.getContents());
+        contents.setText(item.getContents().length() > 50 ? item.getContents().substring(0, 50) + "..." : item.getContents());
 
         return convertView;
     }
