@@ -54,6 +54,30 @@ public class DAO {
         }
     }
 
+    public void updateAccount(DTO dto) {
+        try {
+            URL setURL = new URL("http://klure.dothome.co.kr/updateAccount.php");
+            HttpURLConnection http = getConnection(setURL);
+            StringBuffer buffer = new StringBuffer();
+            buffer.append("data").append("=")
+                    .append(dto.getId()).append("/")
+                    .append(dto.getNick()).append("/")
+                    .append(dto.getIntro());
+            OutputStreamWriter outStream = new OutputStreamWriter(http.getOutputStream(), "UTF-8");
+            outStream.write(buffer.toString());
+            outStream.flush();
+            InputStreamReader tmp = new InputStreamReader(http.getInputStream(), "UTF-8");
+            final BufferedReader reader = new BufferedReader(tmp);
+            String str;
+            while ((str = reader.readLine()) != null) {
+                System.out.println(str);
+            }
+        } catch (Exception e) {
+            Log.e("", "Error", e);
+        }
+
+    }
+
     public DTO login(DTO dto) {
         try {
             URL setURL = new URL("http://klure.dothome.co.kr/login.php");

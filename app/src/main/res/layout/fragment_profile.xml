@@ -50,6 +50,20 @@
                         android:textColor="@color/purple_500"
                         android:textSize="30dp" />
 
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/profileEditNick"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:maxLength="20"
+                            android:hint="NICKNAME" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
                     <TextView
                         android:id="@+id/profile_tv_id"
                         android:layout_width="match_parent"
@@ -66,6 +80,28 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text="TextView" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/profileEditIntro"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:maxLength="20"
+                            android:hint="INTRODUCE" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <Button
+                        android:id="@+id/profileEditSend"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:visibility="gone"
+                        android:text="Button" />
 
                     <ImageButton
                         android:id="@+id/profile_btnEdit"
