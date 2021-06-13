@@ -69,47 +69,10 @@
             android:layout_weight="8"
             android:orientation="vertical">
 
-            <Button
-                android:id="@+id/button2"
-                style="@style/sideBarButton"
+            <ListView
+                android:id="@+id/sideBarMenuLv"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/white"
-                android:text="Home" />
-<!--                android:drawableLeft="@drawable/ic_home"-->
-
-            <Button
-                android:id="@+id/button0"
-                style="@style/sideBarButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/white"
-                android:text="Button" />
-
-            <Button
-                android:id="@+id/button1"
-                style="@style/sideBarButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/white"
-                android:text="Button" />
-
-            <Button
-                android:id="@+id/button3"
-                style="@style/sideBarButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/white"
-                android:text="Button" />
-
-            <Button
-                android:id="@+id/button4"
-                style="@style/sideBarButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/white"
-                android:text="Button" />
-
+                android:layout_height="match_parent" />
         </LinearLayout>
 
     </LinearLayout>

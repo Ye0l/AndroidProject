@@ -32,10 +32,6 @@ public class fragment_groups extends Fragment {
         listView = view.findViewById(R.id.groups_lv);
         listView.setAdapter(adapter);
 
-        String[] groupNames = {"Sed auctor eget quam.", "Aliquam aliquam purus pellentesque.", "Cras scelerisque nulla quis.", "Mauris quis vehicula mauris."};
-        Integer[] memberCounts = {54, 8, 9, 32};
-        String[] groupIntros = {"Aenean tincidunt ligula in metus euismod, id posuere felis lacinia.", "Maecenas suscipit odio sit amet erat varius condimentum.", "Morbi ultrices dui vel sollicitudin congue.", "Curabitur a mauris sit amet nisl pharetra aliquet quis ut nisl."};
-
         new Thread() {
             @Override
             public void run() {
@@ -67,6 +63,7 @@ public class fragment_groups extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(view.getContext(), GroupMain.class);
                 GroupListItem item = (GroupListItem) parent.getItemAtPosition(position);
+                intent.putExtra("ID", item.getId());
                 intent.putExtra("TITLE", item.getName());
                 intent.putExtra("COUNT", String.valueOf(item.getMembercount()));
                 intent.putExtra("INTRO", item.getIntroduce());

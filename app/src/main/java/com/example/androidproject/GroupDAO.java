@@ -38,4 +38,29 @@ public class GroupDAO extends DAO {
         return null;
 
     }
+
+    public ArrayList<SideBarMenuItem> getSideBarMenuItems(Integer menuID) {
+        try {
+            URL setURL = new URL("http://klure.dothome.co.kr/getSideBarMenuItems.php");
+            HttpURLConnection http = getConnection(setURL);
+            OutputStreamWriter outStream = new OutputStreamWriter(http.getOutputStream(), "utf-8");
+            outStream.write("menuID=" + String.valueOf(menuID));
+            outStream.flush();
+            InputStreamReader tmp = new InputStreamReader(http.getInputStream(), "UTF-8");
+            final BufferedReader reader = new BufferedReader(tmp);
+            ArrayList<SideBarMenuItem> sideBarMenuItems = new ArrayList<SideBarMenuItem>();
+            String str;
+            while ((str = reader.readLine()) != null) {
+                SideBarMenuItem item = new SideBarMenuItem();
+                item.setName(str);
+
+                sideBarMenuItems.add(item);
+            }
+
+            return sideBarMenuItems;
+        } catch (Exception e) {
+            Log.e("", "Error", e);
+        }
+        return null;
+    }
 }

@@ -40,12 +40,14 @@ public class GroupListAdapter extends BaseAdapter {
         TextView groupTitle = (TextView) convertView.findViewById(R.id.listItemGroupTitle);
         TextView memberCount = (TextView) convertView.findViewById(R.id.listItemMemberCount);
         TextView groupIntro = (TextView) convertView.findViewById(R.id.listItemGroupIntro);
+        TextView groupId = (TextView) convertView.findViewById(R.id.listItemGroupId);
 
         GroupListItem groupListItem = groupListItems.get(position);
 
         groupTitle.setText(groupListItem.getName());
         memberCount.setText(String.valueOf(groupListItem.getMembercount()));
         groupIntro.setText(groupListItem.getIntroduce());
+        groupId.setText(String.valueOf(groupListItem.getId()));
 
         return convertView;
     }
@@ -53,6 +55,7 @@ public class GroupListAdapter extends BaseAdapter {
     public void addItem(GroupDTO dto) {
         GroupListItem item = new GroupListItem();
 
+        item.setId(dto.getId());
         item.setName(dto.getName());
         item.setMembercount(dto.getMemberCount());
         item.setIntroduce(dto.getIntro());

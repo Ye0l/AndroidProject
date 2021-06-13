@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -22,23 +23,23 @@ public class GroupBoard extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_group_board, container, false);
-        ListView listView = view.findViewById(R.id.group_board_lv);
-        GroupBoardAdapter adapter = new GroupBoardAdapter();
-        listView.setAdapter(adapter);
+
+        ListView boardListView = view.findViewById(R.id.group_board_lv);
+        GroupBoardAdapter boardAdapter = new GroupBoardAdapter();
+        boardListView.setAdapter(boardAdapter);
         new Thread() {
             @Override
             public void run() {
                 try {
-                    ArrayList<GroupBoardItem> itemArrayList = new GroupBoardDAO().loadPostList();
+                    final ArrayList<GroupBoardItem> itemArrayList = new GroupBoardDAO().loadPostList(getArguments().getInt("ID"));
                     handler.post(new Runnable() {
                         @Override
                         public void run() {
-                            adapter.clearItem();
+                            boardAdapter.clearItem();
                             for(GroupBoardItem item : itemArrayList) {
-                                adapter.addItem(item);
+                                boardAdapter.addItem(item);
                             }
-                            adapter.notifyDataSetChanged();
-                            Toast.makeText(view.getContext(), "ok", Toast.LENGTH_SHORT).show();
+                            boardAdapter.notifyDataSetChanged();
                         }
                     });
                 } catch (Exception e) {
@@ -46,6 +47,12 @@ public class GroupBoard extends Fragment {
                 }
             }
         }.start();
+        boardListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                
+            }
+        });
 
         return view;
     }

@@ -1,9 +1,18 @@
 package com.example.androidproject;
 
 public class GroupListItem {
+    Integer id;
     String name;
     String introduce;
     Integer membercount;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;

@@ -39,6 +39,7 @@ public class GroupBoardAdapter extends BaseAdapter {
 
         TextView title = (TextView) convertView.findViewById(R.id.group_board_title);
         TextView writer = (TextView) convertView.findViewById(R.id.group_board_writer);
+        TextView id = (TextView) convertView.findViewById(R.id.group_board_id);
         TextView date = (TextView) convertView.findViewById(R.id.group_board_date);
         TextView contents = (TextView) convertView.findViewById(R.id.group_board_contents);
 
@@ -46,6 +47,7 @@ public class GroupBoardAdapter extends BaseAdapter {
 
         title.setText(item.getTitle());
         writer.setText(item.getWriter());
+        id.setText(item.getId());
         date.setText(item.getDate());
         contents.setText(item.getContents());
 
